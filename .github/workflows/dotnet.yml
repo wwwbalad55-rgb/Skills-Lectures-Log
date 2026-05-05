@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-    # قمنا بتغيير النظام هنا من ubuntu إلى windows ليناسب مشروعك
     runs-on: windows-latest
 
     steps:
@@ -14,7 +13,8 @@ jobs:
       uses: microsoft/setup-msbuild@v1
 
     - name: Restore NuGet Packages
-      run: nuget restore CarRentalSystem.csproj
+      # قمنا بإضافة المسار يدوياً هنا لحل مشكلة المجلد المفقود
+      run: nuget restore CarRentalSystem.csproj -PackagesDirectory packages
 
     - name: Build Project
       run: msbuild CarRentalSystem.csproj /p:Configuration=Release
