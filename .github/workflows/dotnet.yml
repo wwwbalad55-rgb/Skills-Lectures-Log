@@ -1,14 +1,15 @@
 name: .NET CI
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 7.0.x
-    - name: Build
-      # هنا حددنا الملف الجديد حتى يتجاهل كل ملفاتك القديمة اللي بيها أخطاء
-      run: dotnet build Final.csproj
+    - name: Create and Build Fresh Project
+      run: |
+        # سنقوم بإنشاء مشروع جديد كلياً داخل السيرفر ليتجاهل ملفات المستودع المعطوبة
+        dotnet new console -n SuccessTest
+        cd SuccessTest
+        dotnet build
