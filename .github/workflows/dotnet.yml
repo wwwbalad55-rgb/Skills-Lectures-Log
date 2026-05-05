@@ -4,18 +4,13 @@ on: [push]
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1
-
-    - name: Restore NuGet Packages
-      # هذا السطر يحل مشكلة الـ Restore اللي طالعة بالصورة 40
-      run: nuget restore CarRentalSystem.csproj -PackagesDirectory packages
-
-    - name: Build Project
-      # هذا السطر يبني المشروع ويتأكد من وجود كل الملفات
-      run: msbuild CarRentalSystem.csproj /p:Configuration=Release
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+    - name: Build
+      run: dotnet build
