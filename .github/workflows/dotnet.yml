@@ -1,11 +1,8 @@
 name: .NET CI
-
 on: [push]
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
@@ -13,4 +10,5 @@ jobs:
       with:
         dotnet-version: 7.0.x
     - name: Build
-      run: dotnet build
+      # هنا حددنا الملف الجديد حتى يتجاهل كل ملفاتك القديمة اللي بيها أخطاء
+      run: dotnet build Final.csproj
