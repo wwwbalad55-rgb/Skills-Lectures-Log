@@ -13,7 +13,9 @@ jobs:
       uses: microsoft/setup-msbuild@v1
 
     - name: Restore NuGet Packages
-      run: nuget restore CarRentalSystem.csproj
+      # هذا السطر يحل مشكلة الـ Restore اللي طالعة بالصورة 40
+      run: nuget restore CarRentalSystem.csproj -PackagesDirectory packages
 
     - name: Build Project
+      # هذا السطر يبني المشروع ويتأكد من وجود كل الملفات
       run: msbuild CarRentalSystem.csproj /p:Configuration=Release
