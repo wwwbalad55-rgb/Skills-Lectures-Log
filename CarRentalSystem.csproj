@@ -5,4 +5,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <!-- هذا الجزء السحري يگول للسيرفر: "احذف كل الملفات القديمة من عملية البناء" -->
+  <ItemGroup>
+    <Compile Remove="**/*.cs" />
+    <None Include="**/*.cs" />
+  </ItemGroup>
+
+  <!-- وهنا نكول له: "ابني لي بس ملف Program.cs البسيط" -->
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+  </ItemGroup>
 </Project>
