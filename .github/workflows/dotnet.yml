@@ -13,8 +13,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1
 
     - name: Restore NuGet Packages
-      # قمنا بإضافة المسار يدوياً هنا لحل مشكلة المجلد المفقود
-      run: nuget restore CarRentalSystem.csproj -PackagesDirectory packages
+      run: nuget restore CarRentalSystem.csproj
 
     - name: Build Project
       run: msbuild CarRentalSystem.csproj /p:Configuration=Release
